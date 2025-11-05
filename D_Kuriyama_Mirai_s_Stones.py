@@ -1,20 +1,17 @@
 n = int(input())
-a = list(map(int, input().split()))
-prefix = [0] * (n +1)
-prefix1 = [0]  * (n +1)
-for i in range(n):
-    prefix[i+1] = prefix[i] + a[i]
-a.sort()
-for i in range(n):
-    prefix1[i+1] = prefix1[i] + a[i]
+v = list(map(int, input().split()))
+k = sorted(v)
+prefix1 = [0] * (n+1)
+prefix2 = [0] * (n+1)
+for i in range(1,n+1):
+    prefix1[i] = prefix1[i-1] + v[i-1]
+    prefix2[i] = prefix2[i-1] + k[i-1]
+
 m = int(input())
 for i in range(m):
-    t,o,tw = map(int, input().split())
+    t,l,r = map(int, input().split())
     if t == 1:
-        w = prefix[tw] - prefix[o-1]
-        print(w)
+        print(prefix1[r] - prefix1[l-1])
     else:
-         g = prefix1[tw] - prefix1[o-1]
-         print(g)
-
+        print(prefix2[r] - prefix2[l-1])    
 
