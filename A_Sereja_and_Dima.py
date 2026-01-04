@@ -1,32 +1,29 @@
-# n = int(input())
-# for i in range(1,n):
-#     for j in range(1,i+1):
-#         print(j, end= ' ')
-#     print()  
-# 
 
-# n = int(input())  
-# for i in range(n):
-#     for j in range(n-i):
-#         print("*", end = " ")
-#     print()    
+import sys
 
-# from collections import defaultdict
-# n = input()
 
-# dict1  =  defaultdict(int)
-# for cha in n:
-#     dict1[cha] +=1
-# for ch in dict1:
-#     print(f"{ch} occurs {dict1[ch]} times")   
-# 
+n = int(sys.stdin.readline())
+cards = list(map(int, sys.stdin.readline().split()))
 
-# a = list(map(int, input().split()))
-# n = len(a)
-# target = int(input())
+left = 0
+right = n - 1
+sereja = 0
+dima = 0
+turn = 0 
+while left <= right:
+  
+    if cards[left] > cards[right]:
+        val = cards[left]
+        left += 1
+    else:
+        val = cards[right]
+        right -= 1
+        
+    if turn == 0:
+        sereja += val
+        turn = 1
+    else:
+        dima += val
+        turn = 0
 
-# for i in range(n):
-#     for j in range(i+1, n):
-#         if a[i] + a[j] == target:
-#             print(f"pair found: ({a[i]}, {a[j]})")
-
+print(sereja, dima)
